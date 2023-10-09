@@ -1,0 +1,75 @@
+﻿<Window x:Class="Solar.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Solar"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+        WindowState="Maximized">
+    
+    <Window.Resources>
+        <Style x:Key="ToggleButtonStyle" TargetType="ToggleButton">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="Orange"/>
+            <Setter Property="Padding" Value="50"/>
+            <Setter Property="Margin" Value="0,20,20,0"/>
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ToggleButton">
+                        <Border x:Name="Border" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="green"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="Green"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="PlanetLabelStyle" TargetType="Label">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+       <Canvas x:Name="canvas" Background="Black">
+            <Ellipse x:Name="sun" Width="50" Height="50" Fill="Yellow" Canvas.Left="325" Canvas.Top="325"/>
+            <Ellipse x:Name="mercury" Width="10" Height="10" Fill="Orange" />
+            <Ellipse x:Name="venus" Width="12" Height="12" Fill="PeachPuff" />
+            <Ellipse x:Name="earth" Width="15" Height="15" Fill="Blue" />
+            <Ellipse x:Name="mars" Width="12" Height="12" Fill="Red" />
+            <Ellipse x:Name="jupiter" Width="30" Height="30" Fill="Peru" />
+            <Ellipse x:Name="saturn" Width="25" Height="25" Fill="Khaki" />
+            <Ellipse x:Name="uranus" Width="20" Height="20" Fill="LightSkyBlue" />
+            <Ellipse x:Name="neptune" Width="20" Height="20" Fill="BlueViolet" />
+
+            <Label x:Name="sunLabel" Content="Sun" Style="{StaticResource PlanetLabelStyle}" />
+            <Label x:Name="mercuryLabel" Content="Mercury" Style="{StaticResource PlanetLabelStyle}" />
+            <Label x:Name="venusLabel" Content="Venus" Style="{StaticResource PlanetLabelStyle}" />
+            <Label x:Name="earthLabel" Content="Earth" Style="{StaticResource PlanetLabelStyle}" />
+            <Label x:Name="marsLabel" Content="Mars" Style="{StaticResource PlanetLabelStyle}" />
+            <Label x:Name="jupiterLabel" Content="Jupiter" Style="{StaticResource PlanetLabelStyle}" />
+            <Label x:Name="saturnLabel" Content="Saturn" Style="{StaticResource PlanetLabelStyle}" />
+            <Label x:Name="uranusLabel" Content="Uranus" Style="{StaticResource PlanetLabelStyle}" />
+            <Label x:Name="neptuneLabel" Content="Neptune" Style="{StaticResource PlanetLabelStyle}" />
+        </Canvas>
+        <ToggleButton x:Name="timerToggle" 
+                      Content="Use System.Threading.Timer" 
+                      HorizontalAlignment="Right" 
+                      VerticalAlignment="Top" 
+                      Checked="TimerToggle_Checked" 
+                      Unchecked="TimerToggle_Unchecked" 
+                      Style="{StaticResource ToggleButtonStyle}"/>
+    </Grid>
+</Window>
